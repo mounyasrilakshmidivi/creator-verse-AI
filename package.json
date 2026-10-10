@@ -1,0 +1,24 @@
+{
+  "name": "creatorverse-ai",
+  "private": true,
+  "type": "module",
+  "description": "CreatorVerse AI: AI-powered creator marketplace for creators and brands",
+  "scripts": {
+    "start": "powershell -ExecutionPolicy Bypass -File serve.ps1",
+    "test": "npm run test:db && npm run test:functions && npm run check:functions && npm run check:secrets",
+    "test:db": "node --test tests/db.test.mjs tests/network.test.mjs tests/emails.test.mjs",
+    "test:functions": "deno test supabase/functions/tests",
+    "check:functions": "deno check supabase/functions/create-subscription/index.ts supabase/functions/verify-subscription/index.ts supabase/functions/cancel-subscription/index.ts supabase/functions/razorpay-webhook/index.ts supabase/functions/email-dispatch/index.ts supabase/functions/resend-webhook/index.ts",
+    "setup-sql": "node scripts/combine-migrations.mjs",
+    "check:secrets": "node tests/check-secrets.mjs",
+    "vendor": "node -e \"require('fs').copyFileSync('node_modules/@supabase/supabase-js/dist/umd/supabase.js','js/vendor/supabase-2.45.4.js')\""
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.2.17",
+    "deno": "^2.5.6",
+    "exceljs": "^4.4.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4"
+  }
+}

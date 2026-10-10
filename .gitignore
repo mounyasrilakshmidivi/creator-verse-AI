@@ -1,0 +1,9 @@
+.env
+.env.*
+!.env.example
+!supabase/.env.functions.example
+supabase/.env.functions
+supabase/.temp
+supabase/.branches
+.vercel
+node_modules

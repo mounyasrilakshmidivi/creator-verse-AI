@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CreatorVerse AI</title>
+  <meta name="description" content="CreatorVerse AI helps brands find the right creators with AI-powered matching. Creators × Brands × AI." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%237137F0'/><stop offset='1' stop-color='%23D82DE5'/></linearGradient></defs><path d='M24.5 9.2A11 11 0 1 0 24.5 22.8' stroke='url(%23g)' stroke-width='6' fill='none' stroke-linecap='round'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#app">Skip to content</a>
+
+  <!-- ============ Header ============ -->
+  <header class="topbar">
+    <div class="topbar-inner container">
+      <a class="brand" href="#/" aria-label="CreatorVerse AI home">
+        <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <defs><linearGradient id="lgC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7137F0"/><stop offset=".55" stop-color="#B12EE8"/><stop offset="1" stop-color="#FF6FB1"/></linearGradient></defs>
+          <path d="M30.6 11.5A13 13 0 1 0 30.6 28.5" fill="none" stroke="url(#lgC)" stroke-width="7.5" stroke-linecap="round"/>
+          <circle cx="31" cy="20" r="3" fill="#FF9948"/>
+        </svg>
+        <span class="brand-text"><b>CreatorVerse AI</b><small>Creators × Brands × AI</small></span>
+      </a>
+
+      <nav class="topnav" aria-label="Main">
+        <a href="#/" data-route="home">Home</a>
+        <a href="#/explore" data-route="explore">Explore Creators</a>
+        <a href="#/match" data-route="match">AI Matching</a>
+        <a href="#/campaigns" data-route="campaigns">Campaigns</a>
+        <a href="#/pricing" data-route="pricing">Pricing</a>
+      </nav>
+
+      <div class="top-actions">
+        <button class="icon-btn round" id="searchBtn" aria-label="Search creators"><i data-lucide="search"></i></button>
+        <!-- signed out -->
+        <div class="guest-actions" id="guestActions">
+          <a class="btn outline pill" href="#/login">Login</a>
+          <a class="btn primary pill" href="#/signup">Get Started</a>
+        </div>
+        <!-- signed in -->
+        <div class="user-actions" id="userActions" hidden>
+          <a class="icon-btn round" href="#/messages" aria-label="Messages"><i data-lucide="message-circle"></i><em class="dot-count" id="msgBadge" hidden></em></a>
+          <div class="notif-wrap">
+            <button class="icon-btn round" id="notifBtn" aria-label="Notifications"><i data-lucide="bell"></i><em class="dot" id="notifDot" hidden></em></button>
+            <div class="notif-pop" id="notifPop" hidden></div>
+          </div>
+          <div class="menu-wrap">
+            <button class="me-chip" id="meChip" aria-haspopup="true" aria-expanded="false"></button>
+            <div class="me-menu" id="meMenu" hidden></div>
+          </div>
+        </div>
+        <a class="icon-btn round saved-link" href="#/saved" aria-label="Saved creators"><i data-lucide="heart"></i><em class="dot-count" id="savedCount" hidden></em></a>
+        <button class="icon-btn round burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><i data-lucide="menu"></i></button>
+      </div>
+    </div>
+    <nav class="mobile-menu" id="mobileMenu" hidden aria-label="Mobile">
+      <a href="#/" data-route="home"><i data-lucide="home"></i>Home</a>
+      <a href="#/explore" data-route="explore"><i data-lucide="compass"></i>Explore Creators</a>
+      <a href="#/match" data-route="match"><i data-lucide="sparkles"></i>AI Matching</a>
+      <a href="#/campaigns" data-route="campaigns"><i data-lucide="megaphone"></i>Campaigns</a>
+      <a href="#/pricing" data-route="pricing"><i data-lucide="tag"></i>Pricing</a>
+      <a href="#/studio/posts" data-route="studio"><i data-lucide="wand-2"></i>AI Content Studio</a>
+      <div class="mm-auth" id="mobileAuth"></div>
+    </nav>
+  </header>
+
+  <!-- ============ Pages render here ============ -->
+  <main id="app" class="page" tabindex="-1"></main>
+
+  <!-- ============ AI Content Studio ============ -->
+  <section id="studio" class="page container page-body" hidden>
+    <div class="studio-head">
+      <div>
+        <p class="eyebrow"><i data-lucide="wand-2"></i> Free AI tools for creators and brands</p>
+        <h1>AI Content Studio</h1>
+        <p class="muted">Write captions, hashtags, scripts and ad copy (in English, Hindi or Telugu), generate visuals and plan content. Uses the free Pollinations.ai service; output is AI-generated and worth a quick review.</p>
+      </div>
+      <button class="btn soft" id="openSettings"><i data-lucide="palette"></i>Brand kit</button>
+    </div>
+    <nav class="studio-tabs" id="studioTabs">
+      <a href="#/studio/posts" data-tab="posts"><i data-lucide="pen-line"></i>Post Writer</a>
+      <a href="#/studio/images" data-tab="images"><i data-lucide="image"></i>Image Studio</a>
+      <a href="#/studio/planner" data-tab="planner"><i data-lucide="calendar-days"></i>Content Planner</a>
+      <a href="#/studio/library" data-tab="library"><i data-lucide="folder-heart"></i>My Content<em class="badge" id="libCount">0</em></a>
+    </nav>
+
+    <!-- POSTS -->
+    <div class="stab" id="st-posts">
+      <div class="workspace">
+        <form class="panel composer" id="postForm">
+          <label class="field-label">Platform</label>
+          <div class="platforms" id="platformPicker"></div>
+
+          <div class="row-2">
+            <div>
+              <label class="field-label" for="postType">Content type</label>
+              <select id="postType">
+                <option value="caption">Caption / post</option><option value="script">Video script</option>
+                <option value="product">Product description</option><option value="ad">Ad copy</option><option value="hashtags">Hashtags only</option>
+              </select>
+            </div>
+            <div>
+              <label class="field-label" for="postLang">Language</label>
+              <select id="postLang"><option>English</option><option>Telugu</option><option>Hindi</option></select>
+            </div>
+          </div>
+
+          <label class="field-label" for="postTopic">Product, service or topic</label>
+          <textarea id="postTopic" rows="3" required placeholder="e.g. Sponsored post for a new monsoon skincare gel by Kora Skincare"></textarea>
+
+          <label class="field-label" for="postObjective">Campaign objective</label>
+          <select id="postObjective">
+            <option>Brand awareness</option><option>Product launch</option><option>Drive sales</option><option>Grow followers</option><option>App installs</option>
+          </select>
+
+          <div class="row-2">
+            <div>
+              <label class="field-label" for="postTone">Tone</label>
+              <select id="postTone">
+                <option>Friendly</option><option>Professional</option><option>Witty</option>
+                <option>Inspirational</option><option>Bold</option><option>Educational</option>
+                <option>Storytelling</option><option>Luxury</option>
+              </select>
+            </div>
+            <div>
+              <label class="field-label" for="postLength">Length</label>
+              <select id="postLength">
+                <option value="short">Short</option><option value="medium" selected>Medium</option><option value="long">Long</option>
+              </select>
+            </div>
+          </div>
+
+          <label class="field-label" for="postAudience">Audience <span class="opt">optional</span></label>
+          <input id="postAudience" placeholder="e.g. college students, small business owners" />
+
+          <div class="toggles">
+            <label class="switch"><input type="checkbox" id="optEmoji" checked /><span></span>Emojis</label>
+            <label class="switch"><input type="checkbox" id="optTags" checked /><span></span>Hashtags</label>
+            <label class="switch"><input type="checkbox" id="optCta" checked /><span></span>Call to action</label>
+          </div>
+
+          <label class="field-label">Variations</label>
+          <div class="seg" id="postCount">
+            <button type="button" data-v="1" class="on">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button>
+          </div>
+
+          <button class="btn primary block lg" id="postGo" type="submit"><i data-lucide="sparkles"></i>Generate post <kbd>Ctrl ↵</kbd></button>
+        </form>
+
+        <div class="output" id="postOutput">
+          <div class="empty-state">
+            <div class="empty-art"><i data-lucide="pen-line"></i></div>
+            <h3>Your posts will appear here</h3>
+            <p>Tip: mention the brand, the product and one key benefit. Specifics make better sponsored content.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMAGES -->
+    <div class="stab" id="st-images" hidden>
+      <div class="workspace">
+        <form class="panel composer" id="imgForm">
+          <label class="field-label" for="imgPrompt">Prompt</label>
+          <div class="prompt-wrap">
+            <textarea id="imgPrompt" rows="4" required placeholder="e.g. A cozy coffee shop on a rainy evening, warm lights, people reading"></textarea>
+            <button type="button" class="enhance" id="enhanceBtn" title="Rewrite my prompt with AI"><i data-lucide="wand-2"></i>Enhance</button>
+          </div>
+
+          <label class="field-label">Style</label>
+          <div class="styles" id="stylePicker"></div>
+
+          <label class="field-label">Aspect ratio</label>
+          <div class="ratios" id="ratioPicker"></div>
+
+          <div class="row-2">
+            <div>
+              <label class="field-label">Images</label>
+              <div class="seg" id="imgCount">
+                <button type="button" data-v="1">1</button><button type="button" data-v="2" class="on">2</button><button type="button" data-v="4">4</button>
+              </div>
+            </div>
+            <div>
+              <label class="field-label" for="imgSeed">Seed <span class="opt">optional</span></label>
+              <input id="imgSeed" type="number" min="0" placeholder="Random" />
+            </div>
+          </div>
+
+          <button class="btn primary block lg" id="imgGo" type="submit"><i data-lucide="sparkles"></i>Generate images <kbd>Ctrl ↵</kbd></button>
+        </form>
+
+        <div class="output" id="imgOutput">
+          <div class="empty-state">
+            <div class="empty-art pink"><i data-lucide="image"></i></div>
+            <h3>Your canvas is empty</h3>
+            <p>Try a style preset and click <b>Enhance</b> to turn a short idea into a detailed prompt.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLANNER -->
+    <div class="stab" id="st-planner" hidden>
+      <form class="panel planner-form" id="planForm">
+        <div class="pf-grid">
+          <div class="pf-wide">
+            <label class="field-label" for="planNiche">Your niche</label>
+            <input id="planNiche" required placeholder="e.g. Sustainable fashion creator in Mumbai" />
+          </div>
+          <div>
+            <label class="field-label" for="planGoal">Goal</label>
+            <select id="planGoal">
+              <option>Grow followers</option><option>Land brand deals</option><option>Build authority</option>
+              <option>Boost engagement</option><option>Promote a sponsor</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label" for="planDays">Days</label>
+            <select id="planDays"><option>5</option><option selected>7</option><option>14</option></select>
+          </div>
+        </div>
+        <label class="field-label">Platforms</label>
+        <div class="chips-select" id="planPlatforms"></div>
+        <button class="btn primary lg" id="planGo" type="submit"><i data-lucide="calendar-plus"></i>Build my plan</button>
+      </form>
+      <div id="planOutput" class="plan-grid"></div>
+    </div>
+
+    <!-- LIBRARY -->
+    <div class="stab" id="st-library" hidden>
+      <div class="lib-head">
+        <div class="seg" id="libTabs">
+          <button type="button" data-v="all" class="on">All</button>
+          <button type="button" data-v="post">Posts</button>
+          <button type="button" data-v="image">Images</button>
+        </div>
+        <button class="btn soft" id="exportLib"><i data-lucide="download"></i>Export</button>
+      </div>
+      <div id="libGrid" class="lib-grid"></div>
+    </div>
+  </section>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="#/">
+            <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M30.6 11.5A13 13 0 1 0 30.6 28.5" fill="none" stroke="url(#lgC)" stroke-width="7.5" stroke-linecap="round"/><circle cx="31" cy="20" r="3" fill="#FF9948"/></svg>
+            <span class="brand-text"><b>CreatorVerse AI</b><small>Creators × Brands × AI</small></span>
+          </a>
+          <p>Create with AI. Sell with Confidence. Grow Together.</p>
+        </div>
+        <div><h4>Product</h4><a href="#/explore">Explore Creators</a><a href="#/match">AI Matching</a><a href="#/campaigns">Campaigns</a><a href="#/pricing">Pricing</a></div>
+        <div><h4>For Creators</h4><a href="#/members/creator">Discover Creators</a><a href="#/studio/posts">Creator Resources</a><a href="#/help">Help Center</a></div>
+        <div><h4>For Brands</h4><a href="#/members/brand">Discover Brands</a><a href="#/help/stories">Success Stories</a><a href="#/help/contact">Contact Us</a></div>
+        <div>
+          <h4>Follow Us</h4>
+          <div class="socials" id="socials">
+            <button type="button" data-social="Instagram" aria-label="Instagram"><i data-lucide="instagram"></i></button>
+            <button type="button" data-social="YouTube" aria-label="YouTube"><i data-lucide="youtube"></i></button>
+            <button type="button" data-social="TikTok" aria-label="TikTok"><svg viewBox="0 0 24 24" class="lucide" aria-hidden="true"><path fill="currentColor" stroke="none" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-1.8-2.5V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg></button>
+            <button type="button" data-social="X" aria-label="X"><i data-lucide="twitter"></i></button>
+            <button type="button" data-social="LinkedIn" aria-label="LinkedIn"><i data-lucide="linkedin"></i></button>
+          </div>
+          <p class="foot-note">Official channels are coming soon.</p>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© <span id="year">2026</span> CreatorVerse AI. Demo project: all creators, brands and metrics are sample data.</span>
+        <span><a href="#/legal/privacy">Privacy Policy</a><a href="#/legal/terms">Terms of Service</a><a href="#/legal/refunds">Refunds &amp; Cancellation</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Generic modal -->
+  <dialog id="modal" class="modal">
+    <div class="modal-body" id="modalBody"></div>
+  </dialog>
+
+  <!-- Brand kit -->
+  <dialog id="settingsDlg" class="modal">
+    <form method="dialog" class="modal-body" id="settingsForm">
+      <div class="modal-head">
+        <h2><i data-lucide="palette"></i> Brand kit</h2>
+        <button class="icon-btn" value="cancel" aria-label="Close"><i data-lucide="x"></i></button>
+      </div>
+      <p class="muted">Everything you write in AI Studio gets this context automatically.</p>
+      <label class="field-label" for="brandName">Brand / creator name</label>
+      <input id="brandName" placeholder="e.g. Aanya Styles" />
+      <label class="field-label" for="brandAbout">What you do</label>
+      <textarea id="brandAbout" rows="2" placeholder="e.g. Sustainable fashion creator from Mumbai"></textarea>
+      <label class="field-label" for="brandVoice">Voice</label>
+      <input id="brandVoice" placeholder="e.g. warm, playful, never salesy" />
+      <label class="field-label" for="brandTags">Always-include hashtags</label>
+      <input id="brandTags" placeholder="#AanyaStyles #SlowFashion" />
+      <div class="modal-foot">
+        <button class="btn soft" value="cancel">Cancel</button>
+        <button class="btn primary" value="save"><i data-lucide="check"></i>Save brand kit</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Lightbox -->
+  <dialog id="lightbox" class="lightbox">
+    <button class="icon-btn lb-close" aria-label="Close"><i data-lucide="x"></i></button>
+    <img id="lbImg" alt="" />
+    <p id="lbCap"></p>
+  </dialog>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+  <script src="js/vendor/supabase-2.45.4.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/backend.js"></script>
+  <script src="js/account.js"></script>
+  <script src="js/social.js"></script>
+  <script src="js/admin-analytics.js"></script>
+  <script src="js/studio.js"></script>
+  <script src="js/market.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "muse",
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": ["-ExecutionPolicy", "Bypass", "-File", "serve.ps1"],
+      "port": 5173
+    },
+    {
+      "name": "creatorverse",
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": ["-ExecutionPolicy", "Bypass", "-File", "serve.ps1"],
+      "port": 5180,
+      "autoPort": true
+    }
+  ]
+}
+

@@ -1,0 +1,43 @@
+# Supabase CLI configuration for CreatorVerse AI.
+# Hosted-project auth settings (Site URL, providers, SMTP, templates) are set in the dashboard;
+# see SETUP.md. The [auth] values below mirror them for `supabase start` local development.
+project_id = "creatorverse-ai"
+
+[auth]
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["http://localhost:5173", "http://localhost:5180"]
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true
+double_confirm_changes = true
+otp_length = 6
+otp_expiry = 3600
+
+[auth.email.template.confirmation]
+subject = "Verify your CreatorVerse AI email"
+content_path = "./supabase/templates/confirmation.html"
+
+[auth.email.template.recovery]
+subject = "Reset your CreatorVerse AI password"
+content_path = "./supabase/templates/recovery.html"
+
+[auth.email.template.email_change]
+subject = "Confirm your new CreatorVerse AI email"
+content_path = "./supabase/templates/email_change.html"
+
+[auth.external.google]
+enabled = false   # enable in the dashboard after adding Google OAuth credentials
+client_id = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID)"
+secret = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET)"
+
+# Razorpay and the outbox dispatcher can't send a Supabase user token; both verify their own secret.
+[functions.razorpay-webhook]
+verify_jwt = false
+
+[functions.email-dispatch]
+verify_jwt = false
+
+[functions.resend-webhook]
+verify_jwt = false
